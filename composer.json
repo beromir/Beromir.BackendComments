@@ -1,0 +1,42 @@
+{
+    "name": "beromir/neos-backend-comments",
+    "type": "neos-plugin",
+    "description": "For Neos Studio: Figma-like comments on content nodes in the backend, as notes for your own agent, which reads and resolves them through the Neos MCP server.",
+    "license": "GPL-3.0-or-later",
+    "keywords": [
+        "neos",
+        "neoscms",
+        "flow",
+        "comments",
+        "mcp",
+        "neos-studio"
+    ],
+    "authors": [
+        {
+            "name": "Henrik Reißig",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "neos/neos": "^9.2",
+        "medienreaktor/neos-studio": "^2.5",
+        "medienreaktor/neos-api": "^2.0"
+    },
+    "suggest": {
+        "medienreaktor/neos-mcp": "Offers the comment operations as MCP tools"
+    },
+    "autoload": {
+        "psr-4": {
+            "Beromir\\BackendComments\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Beromir.BackendComments"
+        },
+        "branch-alias": {
+            "dev-main": "1.0.x-dev"
+        }
+    }
+}

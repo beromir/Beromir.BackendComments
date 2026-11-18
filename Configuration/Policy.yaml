@@ -1,0 +1,21 @@
+privilegeTargets:
+  # Each target is a capability and the OAuth scope a token needs to use it:
+  # the matcher is the scope (see Security\CommentScopes), the label its
+  # description on the consent page.
+  'Neos\Api\Security\ApiPrivilege':
+    'Beromir.BackendComments:Api.Comments.Read':
+      matcher: 'comments.read'
+      label: 'Read your comments on content'
+    'Beromir.BackendComments:Api.Comments.Update':
+      matcher: 'comments.update'
+      label: 'Comment on content, resolve, reopen and delete your comments'
+
+roles:
+  'Neos.Neos:AbstractEditor':
+    privileges:
+      -
+        privilegeTarget: 'Beromir.BackendComments:Api.Comments.Read'
+        permission: GRANT
+      -
+        privilegeTarget: 'Beromir.BackendComments:Api.Comments.Update'
+        permission: GRANT

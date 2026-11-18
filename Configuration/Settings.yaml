@@ -1,0 +1,35 @@
+Medienreaktor:
+  NeosStudio:
+    # Build the bundle with
+    #   cd Resources/Private/Plugin && npm install && npm run build
+    # which emits the referenced files into Resources/Public/Plugin.
+    plugins:
+      'Beromir.BackendComments':
+        javascript: 'resource://Beromir.BackendComments/Public/Plugin/plugin.js'
+        stylesheet: 'resource://Beromir.BackendComments/Public/Plugin/plugin.css'
+        position: 100
+
+Neos:
+  Neos:
+    userInterface:
+      translation:
+        autoInclude:
+          Beromir.BackendComments:
+            - Main
+
+  OAuth:
+    # The scopes are the ApiPrivilege targets of Policy.yaml (comments.*),
+    # contributed by Neos.Api's PrivilegeScopes like its own.
+    scopeGroups:
+      'comments':
+        label: 'Comments'
+        position: 210
+
+  OpenApi:
+    FlowAdapter:
+      apis:
+        # Part of the Neos API, so Studio reaches the operations with its token
+        # and Neos.Mcp offers them as tools.
+        neos:
+          classes:
+            'Beromir\BackendComments\Endpoint\Comments\Comments': true

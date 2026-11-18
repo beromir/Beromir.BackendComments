@@ -1,0 +1,20 @@
+'Beromir.BackendComments:Testing.Site':
+  superTypes:
+    'Neos.Neos:Site': true
+  constraints:
+    nodeTypes:
+      'Beromir.BackendComments:Testing.Text': true
+
+'Beromir.BackendComments:Testing.Page':
+  superTypes:
+    'Neos.Neos:Document': true
+  constraints:
+    nodeTypes:
+      'Beromir.BackendComments:Testing.Text': true
+
+'Beromir.BackendComments:Testing.Text':
+  superTypes:
+    'Neos.Neos:Content': true
+  properties:
+    text:
+      type: string

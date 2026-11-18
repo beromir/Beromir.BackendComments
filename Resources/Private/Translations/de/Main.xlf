@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Beromir.BackendComments" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="plugin.name" xml:space="preserve">
+                <source>Comments</source>
+                <target>Kommentare</target>
+            </trans-unit>
+            <trans-unit id="panel.title" xml:space="preserve">
+                <source>Comments</source>
+                <target>Kommentare</target>
+            </trans-unit>
+            <trans-unit id="panel.noSite" xml:space="preserve">
+                <source>Select a page to see its comments</source>
+                <target>Wähle eine Seite, um ihre Kommentare zu sehen</target>
+            </trans-unit>
+            <trans-unit id="list.error" xml:space="preserve">
+                <source>The comments could not be loaded</source>
+                <target>Die Kommentare konnten nicht geladen werden</target>
+            </trans-unit>
+            <trans-unit id="list.emptyOpen" xml:space="preserve">
+                <source>No open comments</source>
+                <target>Keine offenen Kommentare</target>
+            </trans-unit>
+            <trans-unit id="list.empty" xml:space="preserve">
+                <source>No comments</source>
+                <target>Keine Kommentare</target>
+            </trans-unit>
+            <trans-unit id="panel.selectNode" xml:space="preserve">
+                <source>Select an element to comment on it.</source>
+                <target>Wähle ein Element, um es zu kommentieren.</target>
+            </trans-unit>
+            <trans-unit id="dialog.on" xml:space="preserve">
+                <source>On {0}</source>
+                <target>Zu {0}</target>
+            </trans-unit>
+            <trans-unit id="dialog.placeholder" xml:space="preserve">
+                <source>Add a comment…</source>
+                <target>Kommentar schreiben…</target>
+            </trans-unit>
+            <trans-unit id="status.resolved" xml:space="preserve">
+                <source>Resolved</source>
+                <target>Erledigt</target>
+            </trans-unit>
+            <trans-unit id="action.resolve" xml:space="preserve">
+                <source>Resolve</source>
+                <target>Erledigen</target>
+            </trans-unit>
+            <trans-unit id="action.reopen" xml:space="preserve">
+                <source>Reopen</source>
+                <target>Wieder öffnen</target>
+            </trans-unit>
+            <trans-unit id="action.delete" xml:space="preserve">
+                <source>Delete</source>
+                <target>Löschen</target>
+            </trans-unit>
+            <trans-unit id="action.delete.confirm" xml:space="preserve">
+                <source>Delete this comment?</source>
+                <target>Diesen Kommentar löschen?</target>
+            </trans-unit>
+            <trans-unit id="action.comment" xml:space="preserve">
+                <source>Comment</source>
+                <target>Kommentieren</target>
+            </trans-unit>
+            <group id="decorator.openComments" restype="x-gettext-plurals">
+                <trans-unit id="decorator.openComments[0]" xml:space="preserve">
+                    <source>{0} open comment</source>
+                    <target>{0} offener Kommentar</target>
+                </trans-unit>
+                <trans-unit id="decorator.openComments[1]" xml:space="preserve">
+                    <source>{0} open comments</source>
+                    <target>{0} offene Kommentare</target>
+                </trans-unit>
+            </group>
+            <trans-unit id="dialog.title" xml:space="preserve">
+                <source>Comment</source>
+                <target>Kommentar</target>
+            </trans-unit>
+            <trans-unit id="dialog.cancel" xml:space="preserve">
+                <source>Cancel</source>
+                <target>Abbrechen</target>
+            </trans-unit>
+            <trans-unit id="dialog.about" xml:space="preserve">
+                <source>About</source>
+                <target>Betrifft</target>
+            </trans-unit>
+            <trans-unit id="dialog.wholeElement" xml:space="preserve">
+                <source>The whole element</source>
+                <target>Das ganze Element</target>
+            </trans-unit>
+            <trans-unit id="filter.pageOnly" xml:space="preserve">
+                <source>Only this page</source>
+                <target>Nur diese Seite</target>
+            </trans-unit>
+            <trans-unit id="filter.showResolved" xml:space="preserve">
+                <source>Show resolved</source>
+                <target>Erledigte anzeigen</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

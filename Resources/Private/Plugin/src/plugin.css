@@ -1,0 +1,129 @@
+/*
+ * The shell's Tailwind build only holds the utilities the shell uses, so the
+ * layout is styled here, with Studio's design tokens, prefixed bnc-.
+ */
+
+.bnc-panel {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 3);
+  color: var(--color-foreground);
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+}
+
+.bnc-toolbar {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1.5);
+}
+
+/* Pushes the Comment button to the end of the row, after the filters. */
+.bnc-toolbar__comment {
+  margin-left: auto;
+}
+
+.bnc-comment__node span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bnc-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+}
+
+.bnc-dialog__field {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 1.5);
+  font-size: var(--text-small);
+  line-height: var(--text-small--line-height);
+  color: var(--color-muted-foreground);
+}
+
+.bnc-dialog__select {
+  width: 100%;
+}
+
+.bnc-dialog__error {
+  margin: 0;
+  color: var(--color-destructive-text);
+}
+
+.bnc-comments {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bnc-comment {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+  padding: calc(var(--spacing) * 3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.bnc-comment--inspected {
+  border-color: var(--color-primary-text);
+}
+
+.bnc-comment--resolved .bnc-comment__text {
+  color: var(--color-muted-foreground);
+}
+
+.bnc-comment__head {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1.5);
+  min-width: 0;
+}
+
+.bnc-comment__node {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1.5);
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-primary-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.bnc-comment__node:hover span {
+  text-decoration: underline;
+}
+
+.bnc-comment__text {
+  margin: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.bnc-comment__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--spacing) * 2);
+}
+
+.bnc-comment__footer time {
+  color: var(--color-muted-foreground);
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+}
+
+.bnc-comment__actions {
+  display: flex;
+  gap: calc(var(--spacing) * 1);
+}
