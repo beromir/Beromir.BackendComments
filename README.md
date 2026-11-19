@@ -1,29 +1,46 @@
 # Beromir.BackendComments
 
-> Requires **Neos Studio** 2.5 or later (`medienreaktor/neos-studio`, installed
-> with this package). It adds nothing to the classic Neos UI.
+Leave notes on your content in **Neos Studio** and let your agent work through
+them. Select an element in the preview, optionally one of its properties, and
+write what should change. An agent connected as you through the
+[Neos MCP server](https://github.com/medienreaktor/Neos.Mcp) lists your open
+comments, makes the changes and resolves them.
 
-Backend comments on content for **Neos Studio** (`Medienreaktor.NeosStudio`):
-not visitor comments on the website, but notes editors leave in the backend, as
-in a design tool: point at an element, optionally at one of its properties, and
-note what should change. The comments are notes for your own agent: an agent
-connected as you through the [Neos MCP server](https://github.com/medienreaktor/Neos.Mcp)
-lists your open comments, makes the changes and resolves them.
+The comments are for you and your agent, not for website visitors, and they
+live in the backend like comments in a design tool. There are no replies or
+threads: the agent answers in its own chat.
+
+> Requires **Neos Studio** 2.5 or later (`medienreaktor/neos-studio`, installed
+> with this package). The package adds nothing to the classic Neos UI.
 
 ![Commenting on a headline in Neos Studio: the comment button on the element handle opens a dialog, the comment appears in the Comments panel](Documentation/Demo.gif)
 
-- **Comments panel**: your comments on the current page or on all pages, open
-  or resolved. Comment on the selected element, resolve, reopen, delete, and
-  jump to the commented element.
-- **Comment** as a button on the element handle in the preview and in the
-  node context menus: opens the comment dialog for the element, where you can
-  pick the property the comment is about.
-- **Badges** in the document tree and the outline on nodes with open comments;
-  a page counts the comments on its content as well.
+## What you get in Studio
 
-There are no replies or threads: the agent answers in its own chat.
+- **Comment button** on the element handle in the preview and in the node
+  context menus. It opens the comment dialog for the element, where you can
+  pick the property the comment is about.
+- **Comments panel** with your comments on the current page or on all pages,
+  open or resolved. Comment on the selected element, resolve, reopen, delete,
+  and jump to the commented element.
+- **Badges** in the document tree and the outline on nodes with open comments.
+  A page counts the comments on its content as well.
 
 ![Neos Studio with the Comments panel, the comment button on the element handle and badges in the trees](Documentation/Screenshot.jpg)
+
+## How an agent works through your comments
+
+1. `listComments` with `filterByStatus: OPEN`, limited to one page with
+   `filterByDocumentNodeAggregateId` if you ask about one.
+2. For each comment, read the node with `getNode` in the comment's workspace
+   and dimension space point, to see what you saw.
+3. Make the change in that workspace (usually your personal one), on the
+   property the comment names if it names one.
+4. `resolveComment` once it's done. The answer, or a question back, goes to
+   the agent's chat with you, since comments have no replies.
+
+An agent can also leave comments for you with `createComment`, for example
+review notes on a page. They show up in your Comments panel.
 
 ## Compatibility
 
@@ -36,7 +53,7 @@ the element handle.
 
 ## Installation
 
-Run the following command in your site package:
+Require the package in your site package:
 
 ```bash
 composer require --no-update beromir/neos-backend-comments
@@ -52,7 +69,13 @@ and flush the Flow caches:
 
 The package adds its labels to the Neos translation bundle. If Studio shows
 English labels for another interface language, flush that bundle once:
-`./flow flow:cache:flushone Neos_Neos_XliffToJsonTranslations`.
+
+```bash
+./flow flow:cache:flushone Neos_Neos_XliffToJsonTranslations
+```
+
+To offer the comments as MCP tools, install
+[`medienreaktor/neos-mcp`](https://github.com/medienreaktor/Neos.Mcp) as well.
 
 ## Privacy
 
@@ -61,13 +84,13 @@ as you. Every operation is limited to the caller's comments; another user's
 comment is a 404, like one that doesn't exist. Administrators don't see them
 either.
 
-The comments are kept in their own table (`beromir_backendcomments_comment`), not
-in the content repository, so commenting never creates changes to publish.
+The comments are kept in their own table (`beromir_backendcomments_comment`),
+not in the content repository, so commenting never creates changes to publish.
 
-## MCP tools
+## MCP tools and API
 
-The operations are part of the Neos API (`Neos.OpenApi.FlowAdapter.apis.neos`),
-so Studio calls them with its own token and Neos.Mcp offers them as tools:
+The operations are part of the Neos API (`Neos.OpenApi.FlowAdapter.apis.neos`).
+Studio calls them with its own token, and Neos.Mcp offers them as tools:
 
 | Tool / operation | Request                                          | Scope             |
 | ---------------- | ------------------------------------------------ | ----------------- |
@@ -99,20 +122,6 @@ node itself may have changed since.
 if omitted), the dimension space point (the default one if omitted) and the
 property. An empty text or a property the node type doesn't have is a 422, a
 node the caller may not read a 404.
-
-## How an agent uses them
-
-1. `listComments` with `filterByStatus: OPEN`, for one page with
-   `filterByDocumentNodeAggregateId` if the user asks about one.
-2. For each comment, read the node with `getNode` in the comment's workspace
-   and dimension space point, to see what the author saw.
-3. Make the change in that workspace (usually the author's personal one), on
-   the property the comment names if it names one.
-4. `resolveComment` once it's done. The answer, or a question back, goes to
-   the agent's chat with the user, since comments have no replies.
-
-An agent can also leave comments for the user with `createComment`, for
-example review notes on a page; they show up in the user's Comments panel.
 
 ## Development
 
